@@ -5,17 +5,24 @@ PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir
 PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
 BASE_DIR = PACKAGE_ROOT
 
-DEBUG = True
+DEBUG = False
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "dev.db",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dev.db',
+        'USER': 'postgres',
+        'PASSWORD': '39039820',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
 ALLOWED_HOSTS = [
-    "localhost",
+    "localhost","127.0.0.1", ".herokuapp.com",
 ]
 
 # Local time zone for this installation. Choices can be found here:

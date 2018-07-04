@@ -1,10 +1,10 @@
 {% load i18n %}
 {% load account_tags %}
 
-
 <ul class="navbar-nav">
+    <!-- TODO: Add dycamic link here -->
     <li class="nav-item">
-        <a class="nav-link" href="#"> {% trans "Problemset" %}</a>
+        <a class="nav-link" href="http://localhost:8000/blog"> {% trans "Problemset" %}</a>
     </li>
     {% if request.user.is_authenticated %}
         <li class="navbar-text">
