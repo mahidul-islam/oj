@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load pinax_webanalytics_tags %}
+{% load i18n %}
+
+
+{% block styles %}
+    <link href="{% static "css/app.css" %}" rel="stylesheet" />
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+{% endblock %}
+
+
+{% block extra_head_base %}
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    {% block extra_head %}{% endblock %}
+{% endblock %}
+
+
+{% block topbar_base %}
+<header>
+    <div class="navbar {% block navbar_class %}navbar-expand-lg navbar-light bg-light{% endblock %}">
+        <div class="container">
+        {% block topbar %}
+            {% block site_brand %}<a class="navbar-brand" href="{% url "home" %}">{{ SITE_NAME }}</a>{% endblock %}
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="fa fa-bars"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% block nav %}
+                    <ul class="navbar-nav mr-auto">
+                        {% block nav_items %}{% comment %}
+                        <li class="nav-item"><a class="nav-link" href="#tab_one">One</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#tab_two">Two</a></li>
+                        {% endcomment %}{% endblock %}
+                    </ul>
+                {% endblock %}
+                {% block account_bar %}{% include "_account_bar.html" %}{% endblock %}
+            </div>
+        {% endblock %}
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+
+{% block footer %}
+    {% include "_footer.html" %}
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static "js/site.js" %}"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block extra_body_base %}
+    {% analytics %}
+    {% block extra_body %}{% endblock %}
+{% endblock %}
